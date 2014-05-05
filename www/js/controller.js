@@ -34,7 +34,7 @@ $scope.startStop=false;
 	$scope.loadingIndicatorHide=function(){
 		 $ionicLoading.hide();
 	}
-	$scope.options = { maximumAge: 0, timeout: 5000, enableHighAccuracy: true };
+	$scope.options = { maximumAge: 5000, timeout: 27000, enableHighAccuracy: true };
 	$scope.loadingIndicatorShow();
 	function initialize() {
         var mapOptions = {
