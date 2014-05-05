@@ -34,11 +34,13 @@ $scope.startStop=false;
 	$scope.loadingIndicatorHide=function(){
 		 $ionicLoading.hide();
 	}
+	$scope.Lat='52.95310449999999';$scope.Long='-1.1821499999999787';
 	$scope.options = { maximumAge: 5000, timeout: 27000, enableHighAccuracy: true };
 	$scope.loadingIndicatorShow();
+	
 	function initialize() {
         var mapOptions = {
-          center: new google.maps.LatLng(43.07493,-89.381388),
+          center: new google.maps.LatLng($scope.Lat,$scope.Long),
           zoom: 16,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
@@ -62,7 +64,7 @@ $scope.startStop=false;
           return;
         }
 		$scope.enWeight=true;
-		
+		$scope.timeCount=false;
 		
       };
 	  $scope.doStartJog=function(){
@@ -127,7 +129,7 @@ $scope.startStop=false;
 			$scope.timeHr=$scope.millis/(1000*60*60);
 			$scope.speed=($scope.distance/$scope.timeHr).toFixed(3);
 			$scope.calories=(0.75*$scope.distance*$scope.weight).toFixed(3);
-			alert($scope.timeHr);
+			
 			$scope.loadingIndicatorHide();
 			}, function(err){$scope.EndLat=null;$scope.EndLong=null});
 			
