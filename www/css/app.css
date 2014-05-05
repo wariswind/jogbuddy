@@ -1,0 +1,14 @@
+/* CSS Document */
+
+#map{width:100%; height:100%;}
+.scroll {
+  height: 100%;
+}
+.appPanel{position:absolute; top:5%; right:0px; bottom:5%; width:100px; background:hsla(0,0%,62%,0.63); padding:3px;}
+.calList{margin-top:10px;}
+.calList div{border-top:1px solid #000; padding:1px; text-align:center}
+.calList div span{display:block; font-family:Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;}
+.calList div h2{ font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif; margin:2px 0px; padding:0px; font-size:1.7em; }
+
+.enWeight{position:absolute; top:20%; left:5%; width:40%; padding:5px; background:hsla(355,12%,82%,0.67); font-family:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif; text-align:center}
+.timeCount{position:absolute; bottom:2px; left:10%; background:#6F0E10; color:#fff; font-size:1.7em; padding:5px;}

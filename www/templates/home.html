@@ -1,0 +1,31 @@
+<ion-view class="bodyenclose" title="Jogbuddy" >
+<ion-content  scroll="false"  >
+<div id="map"></div>
+<div class="appPanel">
+<button class="button button-calm button-full" ng-click="startJog()" ng-hide="startStop">
+  Start
+</button><button class="button button-assertive" ng-click="stopjog()" ng-show="startStop">
+  Stop
+</button>
+<div ng-hide="startStop" class="calList">
+<div><span>Distance</span><h2>{{distance}}</h2><span>Km</span></div>
+<div><span>Speed</span><h2>{{speed}}</h2><span>Km/hr</span></div>
+<div><span>Calories</span><h2>{{calories}}</h2><span></span></div>
+</div>
+</div>
+<div ng-show="enWeight" class="enWeight">
+<div class="list" style="text-align:left">
+<label class="item item-input item-stacked-label">
+    <span class="input-label">Weight</span>
+    <input type="number" placeholder="Weight" ng-model="weight">
+  </label>
+</div>
+<button class="button button-dark" ng-click="doStartJog()">
+  Continue
+</button>
+</div>
+<div ng-show="timeCount" class="timeCount">
+<timer autostart="false">{{hhours}}:{{mminutes}}:{{sseconds}}</timer>
+</div>
+</ion-content>
+</ion-view>
