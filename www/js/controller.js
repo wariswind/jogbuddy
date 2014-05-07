@@ -129,10 +129,7 @@ $scope.startStop=false;
 	$scope.startTimer();
 	
 		$scope.loadingIndicatorHide();
-        }, function(error) {
-          alert('Unable to get location: ' + error.message);
-		  $scope.loadingIndicatorHide();
-        },$scope.options);
+        });
 	  }
 	 $scope.stopjog=function(){
 		  if(!$scope.map) {
