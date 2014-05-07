@@ -90,7 +90,7 @@ $scope.startStop=false;
 		  $scope.loadingIndicatorShow();
 		  $scope.startStop=true;
 	$scope.timeCount=true;
-	$scope.startTimer();
+	
 		navigator.geolocation.getCurrentPosition(function(position){
 			$scope.StartLat=position.coords.latitude;
 			$scope.StartLong=position.coords.longitude}, function(err){$scope.StartLat=null;$scope.StartLong=null});
@@ -126,7 +126,7 @@ $scope.startStop=false;
         $scope.marker.setPosition($scope.point);
 		
     }
-	
+	$scope.startTimer();
 	
 		$scope.loadingIndicatorHide();
         }, function(error) {
