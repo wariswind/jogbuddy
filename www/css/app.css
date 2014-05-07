@@ -11,4 +11,4 @@
 .calList div h2{ font-family:"Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif; margin:2px 0px; padding:0px; font-size:1.7em; }
 
 .enWeight{position:absolute; top:20%; left:5%; width:40%; padding:5px; background:hsla(355,12%,82%,0.67); font-family:"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, sans-serif; text-align:center}
-.timeCount{position:absolute; bottom:2px; left:10%; background:#6F0E10; color:#fff; font-size:1.7em; padding:5px;}
+.timeCount{position:absolute; bottom:2px; right:1%; background:#6F0E10; color:#fff; font-size:1.7em; padding:5px; z-index:100px}

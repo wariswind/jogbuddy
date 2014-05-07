@@ -2,7 +2,7 @@
 var app=angular.module('jogapp.controllers', [])
 .controller('MainCtrl', function($scope, $ionicLoading){
 })
-.controller('MapCtrl', function($scope, $ionicLoading){
+.controller('MapCtrl', function($scope, $ionicLoading,$timeout){
 	$scope.loadingIndicatorShow = function(){$scope.loading=$ionicLoading.show({
 	    content: '<i class="button button-icon icon ion-loading-a"></i>',
 	    animation: 'fade-in',
@@ -16,6 +16,9 @@ var app=angular.module('jogapp.controllers', [])
 $scope.$broadcast('timer-start');
 $scope.timerRunning = true;
 };
+ $scope.tickTimer = function (){
+$scope.$broadcast('timer-tick');
+};
  
 $scope.stopTimer = function (){
 $scope.$broadcast('timer-stop');
@@ -24,6 +27,10 @@ $scope.timerRunning = false;
  
 $scope.$on('timer-stopped', function (event, data){
 console.log('Timer Stopped - data = ', data);
+$scope.millis=data.millis;
+});
+$scope.$on('timer-tick', function (event, data){
+console.log('Timer tick - data = ', data);
 $scope.millis=data.millis;
 });
 $scope.startStop=false;
@@ -83,6 +90,7 @@ $scope.startStop=false;
 		  $scope.loadingIndicatorShow();
 		  $scope.startStop=true;
 	$scope.timeCount=true;
+	$scope.startTimer();
 		navigator.geolocation.getCurrentPosition(function(position){
 			$scope.StartLat=position.coords.latitude;
 			$scope.StartLong=position.coords.longitude}, function(err){$scope.StartLat=null;$scope.StartLong=null});
@@ -90,6 +98,19 @@ $scope.startStop=false;
 	
         $scope.watchID=navigator.geolocation.watchPosition(function(pos) {
           $scope.map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+		  $scope.EndLat=pos.coords.latitude;
+			$scope.EndLong=pos.coords.longitude;
+			
+			$scope.tickTimer();
+			$timeout(function() {
+				$scope.distance=$scope.distanceFrom($scope.StartLat,$scope.StartLong,$scope.EndLat,$scope.EndLong);
+        $scope.timeHr=$scope.millis/(1000*60*60);
+			$scope.speed=($scope.distance/$scope.timeHr).toFixed(3);
+			$scope.calories=(0.75*$scope.distance*$scope.weight).toFixed(3);
+    }, 1000);
+			
+			
+			
           $scope.point = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
     if(!$scope.marker){
         //create marker
@@ -105,7 +126,7 @@ $scope.startStop=false;
         $scope.marker.setPosition($scope.point);
 		
     }
-	$scope.startTimer();
+	
 	
 		$scope.loadingIndicatorHide();
         }, function(error) {
